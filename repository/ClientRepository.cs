@@ -16,6 +16,16 @@ namespace GestionBoutiqueC.repository
         {
             return clients;
         }
+        
+        public Client SelectByTelephone(string telephone)
+        {
+            foreach (var client in clients)
+            {
+                if (client.Telephone== telephone)
+                    return client;
+            }
+            return null;
+        }
         public Client SelectById(int id)
         {
             foreach (var client in clients)

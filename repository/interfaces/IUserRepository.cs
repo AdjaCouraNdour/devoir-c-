@@ -13,5 +13,7 @@ namespace GestionBoutiqueC.repository.interfaces
     public interface IUserRepository : IRepository<User>
     {
 
+        User SelectByLogin(string login);
+        User SelectByEmail(string email);
     }
 }

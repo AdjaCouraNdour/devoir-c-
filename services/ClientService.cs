@@ -32,7 +32,11 @@ namespace GestionBoutiqueC.services
         {
             clientRepository.Insert(client);
         }
-
+       
+        public Client FindByTelephone(string telephone)
+        {
+            return clientRepository.SelectByTelephone(telephone);
+        }
         public void Delete(int id)
         {
             clientRepository.Delete(id);

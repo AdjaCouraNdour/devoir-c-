@@ -1,4 +1,5 @@
 ﻿using GestionBoutiqueC.data.entities;
+using GestionBoutiqueC.data.enums;
 using GestionBoutiqueC.repository.interfaces;
 using GestionBoutiqueC.services.interfaces;
 
@@ -44,5 +45,9 @@ namespace GestionBoutiqueC.services
             articleRepository.Update(article);
         }
 
+        public List<Article> FindByEtat(EtatArticle etat)
+        {
+            return articleRepository.SelectByEtat(etat);
+        }
     }
 }

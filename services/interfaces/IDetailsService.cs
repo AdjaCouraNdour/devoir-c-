@@ -1,4 +1,5 @@
-﻿using GestionBoutiqueC.data.entities;
+﻿using GestionBoutiqueC.core;
+using GestionBoutiqueC.data.entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,9 @@ using System.Threading.Tasks;
 
 namespace GestionBoutiqueC.services.interfaces
 {
-    public interface IDetailsService
+    public interface IDetailsService : IService<Details>
     {
-        List<Details> FindAll();
-        Details FindById(int id);
-        void Save(Details details);
-        void Delete(int id);
-        void Update(Details details);
+      
 
     }
 }

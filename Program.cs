@@ -38,6 +38,11 @@ namespace GestionBoutiqueC
                             {
                                 case 1:
                                     Client client = ClientView.CreateClient();
+                                    while (clientService.FindByTelephone(client.Telephone) != null)
+                                    {
+                                        Console.WriteLine("Ce numéro existe déjà, veuillez en saisir un autre : ");
+                                        client.Telephone = Console.ReadLine();
+                                    }
                                     clientService.Save(client);
                                     break;
                                 case 2:
@@ -84,18 +89,56 @@ namespace GestionBoutiqueC
                                     {
                                         ClientView.ListClients(clientService.FindAll());
                                         Client client = clientService.FindById(ClientView.SaisirId());
-                                        if (client != null)
+
+                                        if (client != null && client.User == null)
                                         {
                                             User user = UserView.CreateUserForClient();
+
+                                            while (userService.FindByEmail(user.Email) != null)
+                                            {
+                                                Console.WriteLine("Cet Email existe déjà, veuillez en saisir un autre : ");
+                                                user.Email = Console.ReadLine();
+                                            }
+
+                                            do
+                                            {
+                                                if (userService.FindByLogin(user.Login) != null)
+                                                {
+                                                    Console.WriteLine("Ce Login existe déjà, veuillez en saisir un autre : ");
+                                                    user.Login = Console.ReadLine();
+                                                }
+                                            } while (userService.FindByLogin(user.Login) != null);
+
+                                            // Associer l'utilisateur au client et sauvegarder
                                             user.Client = client;
                                             client.User = user;
                                             userService.Save(user);
+
+                                            Console.WriteLine("Utilisateur créé avec succès !");
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Client non trouvé ou possede deja un compte.");
                                         }
 
                                     }
                                     else
                                     {
                                         User user = UserView.CreateUserWithChoice();
+                                        while (userService.FindByEmail(user.Email) != null)
+                                        {
+                                            Console.WriteLine("Cet Email existe déjà, veuillez en saisir un autre : ");
+                                            user.Email = Console.ReadLine();
+                                        }
+
+                                        do
+                                        {
+                                            if (userService.FindByLogin(user.Login) != null)
+                                            {
+                                                Console.WriteLine("Ce Login existe déjà, veuillez en saisir un autre : ");
+                                                user.Login = Console.ReadLine();
+                                            }
+                                        } while (userService.FindByLogin(user.Login) != null);
                                         userService.Save(user);
                                     }
                                     break;
@@ -215,6 +258,14 @@ namespace GestionBoutiqueC
                                             client.ListeDette(dette);
 
                                         }
+                                        else
+                                        {
+                                            Console.WriteLine("article inexistant");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("client pas trouve");
                                     }
                                     break;
                                 case 2:

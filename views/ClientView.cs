@@ -28,10 +28,10 @@ namespace GestionBoutiqueC.views
         {
             Console.Write("Surnom : ");
             string surnom = Console.ReadLine();
-            Console.Write("Téléphone : ");
-            string telephone = Console.ReadLine();
             Console.Write("Adresse : ");
             string adresse = Console.ReadLine();
+            Console.Write("Téléphone : ");
+            string telephone = Console.ReadLine();
             return new Client { Surnom = surnom, Telephone = telephone, Adresse = adresse };
         }
 

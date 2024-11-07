@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 using GestionBoutiqueC.core;
 using GestionBoutiqueC.data.entities;
+using GestionBoutiqueC.data.enums;
 
 
 namespace GestionBoutiqueC.repository.interfaces
 {
     public interface IArticleRepository : IRepository<Article>
     {
-
+        List<Article> SelectByEtat(EtatArticle etat);
     }
 }

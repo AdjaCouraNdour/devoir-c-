@@ -42,5 +42,37 @@ namespace GestionBoutiqueC.repository
                 users.Remove(UserToRemove);
         }
 
+        public User SelectByLogin(string login)
+        {
+            if (users == null || !users.Any())
+            {
+                Console.WriteLine("La liste des utilisateurs est vide ou null.");
+                return null;
+            }
+
+            foreach (var user in users)
+            {
+                if (user.Login == login)
+                    return user;
+            }
+            return null;
+        }
+
+    public User SelectByEmail(string email)
+    {
+        if (users == null || !users.Any())
+        {
+            Console.WriteLine("La liste des utilisateurs est vide ou null.");
+            return null;
+        }
+
+        foreach (var user in users)
+        {
+            if (user.Email == email)
+                return user;
+        }
+        return null;
+    }
+
     }
 }

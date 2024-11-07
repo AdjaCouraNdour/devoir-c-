@@ -1,4 +1,5 @@
-﻿using GestionBoutiqueC.data.entities;
+﻿using GestionBoutiqueC.core;
+using GestionBoutiqueC.data.entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace GestionBoutiqueC.services.interfaces
 {
-    public interface IUserService
+    public interface IUserService: IService<User>
     {
-        List<User> FindAll();
-        User FindById(int id);
-        void Save(User user);
-        void Delete(int id);
-        void Update(User user);
+        User FindByLogin(string login);
+        User FindByEmail(String email);
+
 
     }
 }

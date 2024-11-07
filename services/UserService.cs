@@ -43,5 +43,14 @@ namespace GestionBoutiqueC.services
             userRepository.Update(user);
         }
 
+        public User FindByLogin(string login)
+        {
+            return userRepository.SelectByLogin(login); ;
+        }
+
+        public User FindByEmail(string email)
+        {
+            return userRepository.SelectByEmail(email); 
+        }
     }
 }
