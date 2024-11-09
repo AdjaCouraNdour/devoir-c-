@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GestionBoutiqueC.data.entities
 {
-    public class Client
+    public class Client:IIdentifiable
     {
-        private int id;
+        // private int id;
         private String surnom;
         private String telephone;
         private String adresse;
@@ -21,11 +21,12 @@ namespace GestionBoutiqueC.data.entities
         public Client()
         {
             nbr++;
-            id = nbr;
+            Id = nbr;
         }
 
+        public int Id { get; set; }
 
-        public int Id { get => id; set => id = value; }
+        // public int Id { get => Id; set => Id = value; }
         public string Surnom { get => surnom; set => surnom = value; }
         public string Telephone { get => telephone; set => telephone = value; }
         public string Adresse { get => adresse; set => adresse = value; }
@@ -47,7 +48,7 @@ namespace GestionBoutiqueC.data.entities
         public override string ToString()
         {
             return "Client[" +
-                    "id=" + id +
+                    "id=" + Id +
                     ", surnom='" + surnom + '\'' +
                     ", telephone='" + telephone + '\'' +
                     ", adresse='" + adresse + ']';
@@ -59,7 +60,7 @@ namespace GestionBoutiqueC.data.entities
             if (this == other) return true;
             if (other == null) return false;
             Client client = (Client)other;
-            return id == client.id &&
+            return Id == client.Id &&
                     Object.Equals(surnom, client.surnom) &&
                     Object.Equals(telephone, client.telephone) &&
                     Object.Equals(adresse, client.adresse);

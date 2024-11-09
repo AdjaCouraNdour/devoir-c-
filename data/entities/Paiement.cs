@@ -7,15 +7,17 @@ using System.Xml.Linq;
 
 namespace GestionBoutiqueC.data.entities
 {
-    public class Paiement
+    public class Paiement:IIdentifiable
     {
-        public int id;
+        // public int id;
         private DateTime date;
         private double montant;
         private Dette dette;
         private static int nbr;
 
-        public int Id { get => id; set => id = value; }
+        public int Id { get; set; }
+
+        // public int Id { get => Id; set => Id = value; }
         public DateTime DateTime { get => date; set => date = value; }
         public Dette Dette { get => dette; set => dette = value; }
         public double Montant { get => montant; set => montant = value; }
@@ -25,13 +27,13 @@ namespace GestionBoutiqueC.data.entities
         public Paiement()
         {
             nbr++;
-            id = nbr;
+            Id = nbr;
             date = DateTime.Now;
         }
 
         public override String ToString()
         {
-            return "Paiement [id=" + id + ", " +
+            return "Paiement [id=" + Id + ", " +
                 "date=" + date + ", " +
                 "montant=" + montant + ", " +
                 "dette=" + dette.Id + "]";
@@ -40,7 +42,7 @@ namespace GestionBoutiqueC.data.entities
         public override bool Equals(object? obj)
         {
             return obj is Paiement paiement &&
-                   id == paiement.id &&
+                   Id == paiement.Id &&
                    date == paiement.date &&
                    montant == paiement.montant &&
                    EqualityComparer<Dette>.Default.Equals(dette, paiement.dette) &&

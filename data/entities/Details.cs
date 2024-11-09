@@ -8,9 +8,9 @@ using System.Xml.Linq;
 
 namespace GestionBoutiqueC.data.entities
 {
-    public class Details
+    public class Details:IIdentifiable
     {
-        private int id;
+        // private int id;
         private double qteDette;
         private Dette dette;
         private Article article;
@@ -18,9 +18,11 @@ namespace GestionBoutiqueC.data.entities
         public Details()
         {
             nbr++;
-            id = nbr;
+            Id = nbr;
         }
-        public int Id { get => id; set => id = value; }
+        public int Id { get; set; }
+
+        // public int Id { get => Id; set => Id = value; }
         public double QteDette { get => qteDette; set => qteDette = value; }
         public Dette Dette { get => dette; set => dette = value; }
         public Article Article { get => article; set => article = value; }
@@ -32,7 +34,7 @@ namespace GestionBoutiqueC.data.entities
         public override String ToString()
         {
             return "Details{" +
-                    "id=" + id + // Ajoute l'ID depuis AbstractEntity
+                    "id=" + Id + // Ajoute l'ID depuis AbstractEntity
                     ", qteDette=" + qteDette +
                     ", detteId=" + (dette != null ? dette.Id : "null") + // Affiche l'ID de la dette si elle n'est pas null
                     ", article=" + (article != null ? article.Libelle : "null") + // Affiche l'ID de l'article si elle n'est pas null
@@ -42,7 +44,7 @@ namespace GestionBoutiqueC.data.entities
         public override bool Equals(object? obj)
         {
             return obj is Details details &&
-                   id == details.id &&
+                   Id == details.Id &&
                    qteDette == details.qteDette &&
                    Id == details.Id &&
                    QteDette == details.QteDette;

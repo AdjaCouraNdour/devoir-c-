@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace GestionBoutiqueC.data.entities
 {
-    public class Article
+    public class Article :IIdentifiable
     {
-        private int id;
+        // private int id;
         private String reference;
         private String libelle;
         private int prix ;
@@ -22,10 +22,11 @@ namespace GestionBoutiqueC.data.entities
         public Article()
         {
             nbr++;
-            id = nbr;
+            Id = nbr;
         }
+        public int Id { get; set; }
 
-        public int Id { get => id; set => id = value; }
+        // public int Id { get => Id; set => Id = value; }
         public string Libelle { get => libelle; set => libelle = value; }
         public string Reference { get => reference; set => reference = value; }
         public int Prix { get => prix; set => prix = value; }
@@ -67,7 +68,7 @@ namespace GestionBoutiqueC.data.entities
         public override String ToString()
         {
             return "Article{" +
-                    "id=" + id +
+                    "id=" + Id +
                     ", reference='" + reference +
                     ", libelle='" + libelle +
                     ", prix=" + prix +
@@ -79,7 +80,7 @@ namespace GestionBoutiqueC.data.entities
         public override bool Equals(object? obj)
         {
             return obj is Article article &&
-                   id == article.id &&
+                   Id == article.Id &&
                    reference == article.reference &&
                    libelle == article.libelle &&
                    prix == article.prix &&

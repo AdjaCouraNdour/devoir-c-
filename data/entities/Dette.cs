@@ -9,9 +9,9 @@ using System.Xml.Linq;
 
 namespace GestionBoutiqueC.data.entities
 {
-    public class Dette
+    public class Dette : IIdentifiable
     {
-        private int id;
+        // private int id;
 
         private DateTime date;
 
@@ -38,12 +38,12 @@ namespace GestionBoutiqueC.data.entities
         public Dette()
         {
             nbr++;
-            id = nbr;
+            Id = nbr;
             date = DateTime.Now;
 
         }
-
-        public int Id { get => id; set => id = value; }
+        public int Id { get; set; }
+        // public int Id { get => id; set => id = value; }
         public double Montant { get => montant; set => montant = value; }
         public double MontantVerse { get => montantVerse; set => montantVerse = value; }
         public double MontantRestant { get => montantRestant; set => montantRestant = value; }
@@ -77,7 +77,7 @@ namespace GestionBoutiqueC.data.entities
         public override bool Equals(object? obj)
         {
             return obj is Dette dette &&
-                   id == dette.id &&
+                   Id == dette.Id &&
                    date == dette.date &&
                    montant == dette.montant &&
                    montantVerse == dette.montantVerse &&

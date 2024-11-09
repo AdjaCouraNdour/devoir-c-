@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace GestionBoutiqueC.data.entities
 {
-    public class User
+    public class User:IIdentifiable
     {
-        private int id;
+        // private int id;
         private String login;
         private String email;
         private String password;
@@ -19,12 +19,13 @@ namespace GestionBoutiqueC.data.entities
         public User()
         {
             nbr++;
-            id = nbr;
+            Id = nbr;
         }
 
         private Client client;
+        public int Id { get; set; }
 
-        public int Id { get => id; set => id = value; }
+        // public int Id { get => Id; set => Id = value; }
         public string Login { get => login; set => login = value; }
         public string Email { get => email; set => email = value; }
         public string Password { get => password; set => password = value; }
@@ -36,7 +37,7 @@ namespace GestionBoutiqueC.data.entities
         public override string ToString()
         {
             return "User[" +
-           "id=" + id +
+           "id=" + Id +
            ", email='" + email + '\'' +
            ", login='" + login + '\'' +
            ", actif='" + actif + '\'' +
@@ -50,7 +51,7 @@ namespace GestionBoutiqueC.data.entities
         public override bool Equals(object? obj)
         {
             return obj is User user &&
-                   id == user.id &&
+                   Id == user.Id &&
                    login == user.login &&
                    email == user.email &&
                    password == user.password &&
