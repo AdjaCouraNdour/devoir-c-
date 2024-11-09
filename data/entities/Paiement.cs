@@ -16,9 +16,7 @@ namespace GestionBoutiqueC.data.entities
         private static int nbr;
 
         public int Id { get; set; }
-
-        // public int Id { get => Id; set => Id = value; }
-        public DateTime DateTime { get => date; set => date = value; }
+        public DateTime Date { get => date; set => date = value; }
         public Dette Dette { get => dette; set => dette = value; }
         public double Montant { get => montant; set => montant = value; }
         public static int Nbr { get => nbr; set => nbr = value; }
@@ -29,7 +27,11 @@ namespace GestionBoutiqueC.data.entities
             nbr++;
             Id = nbr;
             date = DateTime.Now;
+           CreateAt = DateTime.Now;
+            UpdateAt = DateTime.Now;
         }
+        public DateTime CreateAt { get; set; }
+        public DateTime UpdateAt { get; set; }
 
         public override String ToString()
         {
@@ -47,7 +49,7 @@ namespace GestionBoutiqueC.data.entities
                    montant == paiement.montant &&
                    EqualityComparer<Dette>.Default.Equals(dette, paiement.dette) &&
                    Id == paiement.Id &&
-                   DateTime == paiement.DateTime &&
+                   Date == paiement.Date &&
                    EqualityComparer<Dette>.Default.Equals(Dette, paiement.Dette) &&
                    Montant == paiement.Montant;
         }

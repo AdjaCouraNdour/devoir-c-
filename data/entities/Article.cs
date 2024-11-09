@@ -23,7 +23,12 @@ namespace GestionBoutiqueC.data.entities
         {
             nbr++;
             Id = nbr;
+            CreateAt = DateTime.Now;
+            UpdateAt = DateTime.Now;
+            Reference = $"A{Id:D5}";
         }
+        public DateTime CreateAt { get; set; }
+        public DateTime UpdateAt { get; set; }
         public int Id { get; set; }
 
         // public int Id { get => Id; set => Id = value; }
@@ -33,11 +38,12 @@ namespace GestionBoutiqueC.data.entities
         //public double QteStock { get => qteStock; set => qteStock = value; }
         public EtatArticle EtatArticle { get => etatArticle; set => etatArticle = value; }
         public static int Nbr { get => nbr; set => nbr = value; }
-
-        public void ListeDetails(Details details)
+        public IEnumerable<Details>? Details { get ; } = new List<Details>() ;
+        public void AddDetails(Details details)
         {
             etatArticle = qteStock == 0 ? EtatArticle.Indisponible : EtatArticle.Disponible;
-            listeDetails.Add(details);
+            details.Article=this; // Associer l'article à cette dette
+            Details.Append<Details>(details);
         }
         public double QteStock
         {

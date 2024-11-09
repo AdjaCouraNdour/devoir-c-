@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 using GestionBoutiqueC.core;
 using GestionBoutiqueC.data.entities;
+using GestionBoutiqueC.repository.interfaces;
 
 
-namespace GestionBoutiqueC.repository.interfaces
+namespace GestionBoutiqueC.repository.List
 {
-    public interface IUserRepository : IRepository<User>
+    public class PaiementRepository :RepositoryImpl<Paiement>,IPaiementRepository
     {
 
-        User? SelectByLogin(string login);
-        User? SelectByEmail(string email);
     }
 }

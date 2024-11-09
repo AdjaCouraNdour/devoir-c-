@@ -8,11 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestionBoutiqueC.repository
+namespace GestionBoutiqueC.repository.List
 {
     public class ArticleRepository : RepositoryImpl<Article>, IArticleRepository
     {
-        public List<Article> SelectByEtat(EtatArticle etat)
+        public List<Article>? SelectByEtat(EtatArticle etat)
         {
             // Si l'état est null, retourner une liste vide
             if (etat == null)

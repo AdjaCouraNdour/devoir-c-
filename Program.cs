@@ -5,6 +5,8 @@ using GestionBoutiqueC.repository.interfaces;
 using GestionBoutiqueC.services.interfaces;
 using GestionBoutiqueC.services;
 using GestionBoutiqueC.views;
+using GestionBoutiqueC.core.Database;
+using GestionBoutiqueC.repository.Bd;
 
 namespace GestionBoutiqueC
 {
@@ -12,15 +14,16 @@ namespace GestionBoutiqueC
     {
         public static void Main(string[] args)
         {
-            IClientRepository clientRepository = new ClientRepository();
+            IDataBase dataBase =new DataBase();
+            IClientRepository clientRepository = new ClientRepository(dataBase);
             IClientService clientService = new ClientService(clientRepository);
-            IUserRepository userRepository = new UserRepository();
+            IUserRepository userRepository = new UserRepository(dataBase);
             IUserService userService = new UserService(userRepository);
-            IArticleRepository articleRepository = new ArticleRepository();
+            IArticleRepository articleRepository = new ArticleRepository(dataBase);
             IArticleService articleService = new ArticleService(articleRepository);
-            IDetteRepository detteRepository = new DetteRepository();
+            IDetteRepository detteRepository = new DetteRepository(dataBase);
             IDetteService detteService = new DetteService(detteRepository);
-            IDetailsRepository detailsRepository = new DetailsRepository();
+            IDetailsRepository detailsRepository = new DetailsRepository(dataBase);
             IDetailsService detailsService = new DetailsService(detailsRepository);
 
             int choice;
@@ -237,7 +240,7 @@ namespace GestionBoutiqueC
                                                 {
                                                     details.QteDette = qteDette;
                                                     details.Article = art;
-                                                    art.ListeDetails(details);
+                                                    art.AddDetails(details);
                                                 }
                                                 else
                                                 {
@@ -249,13 +252,13 @@ namespace GestionBoutiqueC
                                             dette.EtatDette = EtatDette.EnCours;
 
                                             dette.Client = client;
-                                            dette.ListeDetails(details);
+                                            dette.AddDetails(details);
                                             dette.Montant = details.QteDette * art.Prix;
                                             dette.MontantVerse = 0;
                                             dette.MontantRestant = dette.Montant - dette.MontantRestant;
                                             art.QteStock = art.QteStock - details.QteDette;
                                             detteService.Save(dette);
-                                            client.ListeDette(dette);
+                                            client.AddDette(dette);
 
                                         }
                                         else

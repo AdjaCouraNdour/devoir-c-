@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestionBoutiqueC.repository
+namespace GestionBoutiqueC.repository.List
 {
     public class UserRepository : RepositoryImpl<User>, IUserRepository
     {
 
-        public User SelectByLogin(string login)
+        public User? SelectByLogin(string login)
         {
             if (list == null || !list.Any())
             {
@@ -28,7 +28,7 @@ namespace GestionBoutiqueC.repository
             return null;
         }
 
-    public User SelectByEmail(string email)
+    public User? SelectByEmail(string email)
     {
         if (list == null || !list.Any())
         {

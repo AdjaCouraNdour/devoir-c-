@@ -40,23 +40,30 @@ namespace GestionBoutiqueC.data.entities
             nbr++;
             Id = nbr;
             date = DateTime.Now;
-
+            CreateAt = DateTime.Now;
+            UpdateAt = DateTime.Now;
         }
+        public DateTime CreateAt { get; set; }
+        public DateTime UpdateAt { get; set; }
         public int Id { get; set; }
         // public int Id { get => id; set => id = value; }
+        public DateTime Date { get => date; set => date = value; }
+
         public double Montant { get => montant; set => montant = value; }
         public double MontantVerse { get => montantVerse; set => montantVerse = value; }
         public double MontantRestant { get => montantRestant; set => montantRestant = value; }
         public TypeDette TypeDette { get => typeDette; set => typeDette = value; }
         public EtatDette EtatDette { get => etatDette; set => etatDette = value; }
 
-        public Client Client { get => client; set => client = value; }
+        public Client Client { get ; set; }
         public static int Nbr { get => nbr; set => nbr = value; }
+        public IEnumerable<Details> Details { get ; } = new List<Details>() ;
+        public IEnumerable<Paiement> Paiements { get ; } = new List<Paiement>() ;
 
-        public void ListeDetails(Details details)
+        public void AddDetails(Details details)
         {
             details.Dette=this; // Associer le détail à cette dette
-            listeDetails.Add(details);
+            Details.Append<Details>(details);
         }
 
         public void ListePaiement(Paiement paiement)
@@ -71,7 +78,7 @@ namespace GestionBoutiqueC.data.entities
             {
                 this.typeDette = TypeDette.nonSolde;
             }
-            listePaiements.Add(paiement);
+            Paiements.Append<Paiement>(paiement);
         }
 
         public override bool Equals(object? obj)

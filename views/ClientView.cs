@@ -32,7 +32,7 @@ namespace GestionBoutiqueC.views
             string adresse = Console.ReadLine();
             Console.Write("Téléphone : ");
             string telephone = Console.ReadLine();
-            return new Client { Surnom = surnom, Telephone = telephone, Adresse = adresse };
+            return new Client { Surnom = surnom, Telephone = telephone, Address = adresse };
         }
 
         public static void UpdateClient(Client client)
@@ -46,7 +46,7 @@ namespace GestionBoutiqueC.views
             string newAdresse = Console.ReadLine();
             client.Surnom = newSurnom;
             client.Telephone = newTelephone;
-            client.Adresse = newAdresse;
+            client.Address = newAdresse;
             Console.WriteLine("Client modifié!");
         }
 

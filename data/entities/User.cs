@@ -20,19 +20,22 @@ namespace GestionBoutiqueC.data.entities
         {
             nbr++;
             Id = nbr;
+         CreateAt = DateTime.Now;
+            UpdateAt = DateTime.Now;
         }
+        public DateTime CreateAt { get; set; }
+        public DateTime UpdateAt { get; set; }
 
-        private Client client;
+        private Client? client;
         public int Id { get; set; }
-
-        // public int Id { get => Id; set => Id = value; }
         public string Login { get => login; set => login = value; }
         public string Email { get => email; set => email = value; }
         public string Password { get => password; set => password = value; }
         public UserRole UserRole { get => userRole; set => userRole = value; }
         public bool Actif { get => actif; set => actif = value; }
-        public Client Client { get => client; set => client = value; }
         public static int Nbr { get => nbr; set => nbr = value; }
+        public Client Client { get; set ; }
+
 
         public override string ToString()
         {

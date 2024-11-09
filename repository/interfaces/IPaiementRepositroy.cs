@@ -10,10 +10,8 @@ using GestionBoutiqueC.data.entities;
 
 namespace GestionBoutiqueC.repository.interfaces
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IPaiementRepository : IRepository<Paiement>
     {
 
-        User? SelectByLogin(string login);
-        User? SelectByEmail(string email);
     }
 }

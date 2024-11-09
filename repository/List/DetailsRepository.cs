@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestionBoutiqueC.repository
+namespace GestionBoutiqueC.repository.List
 {
     public class DetailsRepository : RepositoryImpl<Details>, IDetailsRepository
     {

@@ -10,7 +10,7 @@ namespace GestionBoutiqueC.core
     public class RepositoryImpl<T> : IRepository<T> where T : IIdentifiable
     {
         public readonly List<T> list = new List<T>();
-        
+
         public void Insert(T entity)
         {
             list.Add(entity);
@@ -21,15 +21,10 @@ namespace GestionBoutiqueC.core
             return list ;
         }
 
-        public T SelectById(int id)
+        public T? SelectById(int id)
         {
             return list.FirstOrDefault(entity => entity.Id == id);
-            // foreach (var e in list)
-            // {
-            //     if (e.Id == id)
-            //         return e;
-            // }
-            // return null;
+           
         }
 
         public void Update(T entity)

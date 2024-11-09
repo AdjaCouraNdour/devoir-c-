@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestionBoutiqueC.repository
+namespace GestionBoutiqueC.repository.List
 {
     public class ClientRepository : RepositoryImpl<Client>, IClientRepository
     {
-        public Client SelectByTelephone(string telephone)
+        public Client? SelectByTelephone(string telephone)
         {
             foreach (var client in list)
             {

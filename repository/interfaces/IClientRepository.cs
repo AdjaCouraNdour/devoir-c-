@@ -12,6 +12,6 @@ namespace GestionBoutiqueC.repository.interfaces
 {
     public interface IClientRepository : IRepository<Client>
     {
-        Client SelectByTelephone(string telephone);
+        Client? SelectByTelephone(string telephone);
     }
 }

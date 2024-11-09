@@ -19,13 +19,17 @@ namespace GestionBoutiqueC.data.entities
         {
             nbr++;
             Id = nbr;
+           CreateAt = DateTime.Now;
+            UpdateAt = DateTime.Now;
         }
+        public DateTime CreateAt { get; set; }
+        public DateTime UpdateAt { get; set; }
         public int Id { get; set; }
 
         // public int Id { get => Id; set => Id = value; }
         public double QteDette { get => qteDette; set => qteDette = value; }
-        public Dette Dette { get => dette; set => dette = value; }
-        public Article Article { get => article; set => article = value; }
+        public Dette Dette { get ; set ; }
+        public Article Article { get ; set; }
         public static int Nbr { get => nbr; set => nbr = value; }
 
 

@@ -13,6 +13,6 @@ namespace GestionBoutiqueC.repository.interfaces
 {
     public interface IArticleRepository : IRepository<Article>
     {
-        List<Article> SelectByEtat(EtatArticle etat);
+        List<Article>? SelectByEtat(EtatArticle etat);
     }
 }
