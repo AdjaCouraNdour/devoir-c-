@@ -1,13 +1,8 @@
 ﻿using GestionBoutiqueC.repository;
 using GestionBoutiqueC.data.entities;
 using GestionBoutiqueC.data.enums;
-using GestionBoutiqueC.repository.interfaces;
 using GestionBoutiqueC.services.interfaces;
-using GestionBoutiqueC.services;
 using GestionBoutiqueC.views;
-using GestionBoutiqueC.core.Database;
-using System.ComponentModel.DataAnnotations.Schema;
-using GestionBoutiqueC.repository.Bd;
 using GestionBoutiqueC.core.Factory;
 
 namespace GestionBoutiqueC
@@ -19,17 +14,11 @@ namespace GestionBoutiqueC
             // IDataBase dataBase =new DataBase();
             // IClientRepository clientRepository = new ClientRepositoryBd(dataBase);
 
-            IClientRepository clientRepository = FactoryRepo.createClientRepository(Persistence.List)!  ;
-            IUserRepository userRepository = FactoryRepo.createUserRepository(Persistence.Database)!;
-            IArticleRepository articleRepository =FactoryRepo.createArticleRepository(Persistence.Database)!;
-            IDetteRepository detteRepository = FactoryRepo.createDetteRepository(Persistence.Database)!;
-            IDetailsRepository detailsRepository = FactoryRepo.createDetailsRepository(Persistence.Database)!;
-            
-            IClientService clientService = new ClientService(clientRepository);
-            IUserService userService = new UserService(userRepository);
-            IArticleService articleService = new ArticleService(articleRepository);
-            IDetteService detteService = new DetteService(detteRepository);
-            IDetailsService detailsService = new DetailsService(detailsRepository);
+            IClientService clientService = FactoryService.createClientService()!;
+            IUserService userService = FactoryService.createUserService()!;
+            IArticleService articleService = FactoryService.createArticleService()!;
+            IDetteService detteService = FactoryService.createDetteService()!;
+            IDetailsService detailsService = FactoryService.createDetailsService()!;
 
             int choice;
             do
@@ -369,6 +358,16 @@ namespace GestionBoutiqueC
         {
             Console.WriteLine("1. Faire une dette");
             Console.WriteLine("2. Afficher les dette solde");
+            Console.WriteLine("0. Quitter");
+            Console.Write("Votre choix : ");
+            // return int.Parse(Console.ReadLine());
+            // double.Parse(Console.ReadLine());
+            return Convert.ToInt32(Console.ReadLine());
+        }
+         public static int MenuPaiement()
+        {
+            Console.WriteLine("1. Faire un paiement");
+            Console.WriteLine("2. Afficher les dette nonsolde");
             Console.WriteLine("0. Quitter");
             Console.Write("Votre choix : ");
             // return int.Parse(Console.ReadLine());
