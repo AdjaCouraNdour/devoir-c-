@@ -6,6 +6,7 @@ using GestionBoutiqueC.services.interfaces;
 using GestionBoutiqueC.services;
 using GestionBoutiqueC.views;
 using GestionBoutiqueC.core.Database;
+using System.ComponentModel.DataAnnotations.Schema;
 using GestionBoutiqueC.repository.Bd;
 
 namespace GestionBoutiqueC
@@ -276,13 +277,19 @@ namespace GestionBoutiqueC
                                     Client client1 = clientService.FindById(ClientView.SaisirId());
                                     if (client1 != null)
                                     {
-                                        if (client1.ListeDette != null)
-                                        {
-                                            Console.WriteLine(client1.ListeDette);
-                                        }
+                                        List<Dette> dettes = detteService.GetDettesByClient(client1);
+                                        if (dettes !=null)
+                                            {
+                                                Console.WriteLine("Liste des dettes du client:");
+                                                foreach (var dette in dettes)
+                                                {
+                                                    Console.WriteLine(dette);
+                                                    // Affichez d'autres informations si nécessaire
+                                                }   
+                                            }
                                         else
                                         {
-                                            Console.WriteLine("Ce client n'a aucune dette.");
+                                            Console.WriteLine("ce client n'a pas de dette ");
                                         }
                                     }
                                     else

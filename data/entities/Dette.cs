@@ -80,6 +80,20 @@ namespace GestionBoutiqueC.data.entities
             }
             Paiements.Append<Paiement>(paiement);
         }
+        public override string ToString()
+        {
+            return "Dette{" +
+                            "id=" + Id + 
+                            ", date=" + date +
+                            ", montant=" + montant +
+                            ", montantRestant=" + montantRestant +
+                            ", montantVerse=" + montantVerse +
+                            ", TypeDette=" + typeDette +
+                            ", EtatDette=" + etatDette +
+                            ", Montant verse=" + montantVerse +
+                            ", client=" + (client != null ? client.Id : "null") + 
+                            '}';
+        }
 
         public override bool Equals(object? obj)
         {

@@ -12,6 +12,8 @@ namespace GestionBoutiqueC.repository.interfaces
 {
     public interface IDetteRepository : IRepository<Dette>
     {
+        List<Dette> SelectDettesByClientId(int clientId);
+        List<Dette> SelectDettesByClient(Client client);
 
     }
 }

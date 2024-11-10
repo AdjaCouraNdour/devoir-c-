@@ -14,6 +14,39 @@ namespace GestionBoutiqueC.repository.Bd
         {
         }
 
+        public List<Dette> SelectDettesByClient(Client client)
+        {
+            if (client == null)
+            {
+                throw new ArgumentNullException(nameof(client), "Client cannot be null");
+            }
+
+            return SelectDettesByClientId(client.Id);
+        }
+
+
+        public List<Dette> SelectDettesByClientId(int clientId)
+        {
+            List<Dette>? dettes = new List<Dette>();
+            string query = $"SELECT * FROM dette WHERE client_id = @clientId"; // Correction ici
+            using (var conn = dataBase.getConnection())
+            {
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@clientId", clientId); // Correction ici
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            dettes.Add(MapEntity(reader));
+                        }
+                    }
+                }
+            }
+            return dettes;      
+        }
+
+
         protected override string GetColumnNames()
         {
             return "date, montant, montant_verse, montant_restant, type_dette, etat_dette, client_id, createAt, updateAt";
