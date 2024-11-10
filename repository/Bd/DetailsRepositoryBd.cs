@@ -8,9 +8,9 @@ using System.Collections.Generic;
 
 namespace GestionBoutiqueC.repository.Bd
 {
-    public class DetailsRepository : RepositoryBdImpl<Details>, IDetailsRepository
+    public class DetailsRepositoryBd : RepositoryBdImpl<Details>, IDetailsRepository
     {
-        public DetailsRepository(IDataBase dataBase) : base(dataBase)
+        public DetailsRepositoryBd(IDataBase dataBase) : base(dataBase)
         {
         }
 

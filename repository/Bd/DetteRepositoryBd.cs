@@ -8,9 +8,9 @@ using System;
 
 namespace GestionBoutiqueC.repository.Bd
 {
-    public class DetteRepository : RepositoryBdImpl<Dette>, IDetteRepository
+    public class DetteRepositoryBd : RepositoryBdImpl<Dette>, IDetteRepository
     {
-        public DetteRepository(IDataBase dataBase) : base(dataBase)
+        public DetteRepositoryBd(IDataBase dataBase) : base(dataBase)
         {
         }
 

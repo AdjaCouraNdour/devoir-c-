@@ -9,9 +9,9 @@ using System.Collections.Generic;
 
 namespace GestionBoutiqueC.repository.Bd
 {
-    public class ArticleRepository : RepositoryBdImpl<Article>, IArticleRepository
+    public class ArticleRepositoryBd : RepositoryBdImpl<Article>, IArticleRepository
     {
-        public ArticleRepository(IDataBase dataBase) : base(dataBase)
+        public ArticleRepositoryBd(IDataBase dataBase) : base(dataBase)
         {
         }
 

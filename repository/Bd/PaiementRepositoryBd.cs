@@ -7,9 +7,9 @@ using System;
 
 namespace GestionBoutiqueC.repository.Bd
 {
-    public class PaiementRepository : RepositoryBdImpl<Paiement>, IPaiementRepository
+    public class PaiementRepositoryBd : RepositoryBdImpl<Paiement>, IPaiementRepository
     {
-        public PaiementRepository(IDataBase dataBase) : base(dataBase)
+        public PaiementRepositoryBd(IDataBase dataBase) : base(dataBase)
         {
         }
 

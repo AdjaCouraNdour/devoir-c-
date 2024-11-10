@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 namespace GestionBoutiqueC.repository.Bd
 {
-    public class ClientRepository : RepositoryBdImpl<Client>, IClientRepository
+    public class ClientRepositoryBd : RepositoryBdImpl<Client>, IClientRepository
     {
 
-    public ClientRepository(IDataBase dataBase) : base(dataBase)
+    public ClientRepositoryBd(IDataBase dataBase) : base(dataBase)
     {
     }
 

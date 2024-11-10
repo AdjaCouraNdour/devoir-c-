@@ -8,6 +8,7 @@ using GestionBoutiqueC.views;
 using GestionBoutiqueC.core.Database;
 using System.ComponentModel.DataAnnotations.Schema;
 using GestionBoutiqueC.repository.Bd;
+using GestionBoutiqueC.core.Factory;
 
 namespace GestionBoutiqueC
 {
@@ -15,16 +16,19 @@ namespace GestionBoutiqueC
     {
         public static void Main(string[] args)
         {
-            IDataBase dataBase =new DataBase();
-            IClientRepository clientRepository = new ClientRepository(dataBase);
+            // IDataBase dataBase =new DataBase();
+            // IClientRepository clientRepository = new ClientRepositoryBd(dataBase);
+
+            IClientRepository clientRepository = FactoryRepo.createClientRepository(Persistence.List)!  ;
+            IUserRepository userRepository = FactoryRepo.createUserRepository(Persistence.Database)!;
+            IArticleRepository articleRepository =FactoryRepo.createArticleRepository(Persistence.Database)!;
+            IDetteRepository detteRepository = FactoryRepo.createDetteRepository(Persistence.Database)!;
+            IDetailsRepository detailsRepository = FactoryRepo.createDetailsRepository(Persistence.Database)!;
+            
             IClientService clientService = new ClientService(clientRepository);
-            IUserRepository userRepository = new UserRepository(dataBase);
             IUserService userService = new UserService(userRepository);
-            IArticleRepository articleRepository = new ArticleRepository(dataBase);
             IArticleService articleService = new ArticleService(articleRepository);
-            IDetteRepository detteRepository = new DetteRepository(dataBase);
             IDetteService detteService = new DetteService(detteRepository);
-            IDetailsRepository detailsRepository = new DetailsRepository(dataBase);
             IDetailsService detailsService = new DetailsService(detailsRepository);
 
             int choice;
