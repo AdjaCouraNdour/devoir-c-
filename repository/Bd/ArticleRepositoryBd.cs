@@ -84,7 +84,7 @@ namespace GestionBoutiqueC.repository.Bd
             cmd.Parameters.AddWithValue("@prix", entity.Prix);
             cmd.Parameters.AddWithValue("@qte_stock", entity.QteStock);
             cmd.Parameters.AddWithValue("@etat_article", entity.EtatArticle.ToString());
-            cmd.Parameters.AddWithValue("@updateAt", DateTime.Now);
+            cmd.Parameters.AddWithValue("@updateAt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
         }
     }

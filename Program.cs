@@ -299,6 +299,97 @@ namespace GestionBoutiqueC
                             }
                         } while (choiceDette != 0);
                         break;
+                    case 5:
+                        int choicePaiement;
+                        do
+                        {
+                            choicePaiement = MenuPaiement();
+                            switch (choicePaiement)
+                            {
+                                case 1:
+                                    Paiement pmt=new Paiement(); 
+                                    ClientView.ListClients(clientService.FindAll());
+                                    Client client = clientService.FindById(ClientView.SaisirId());
+                                    if (client != null)
+                                    {
+                                        DetteView.ListDettes(detteService.FindAll());
+                                        Dette dette = detteService.FindById(DetteView.SaisirId());
+                                        if (dette != null)
+                                        {
+                                            int m;
+                                            do
+                                            {
+                                                Console.WriteLine("Entrer le montant à payer");
+                                                m = int.Parse(Console.ReadLine());
+                                            } while (m <= 0 || m > dette.MontantRestant);
+
+                                            dette.MontantVerse += m;
+                                            pmt.Montant = m;
+                                            // dette.MontantRestant -= pmt.Montant;
+                                            dette.AddPaiement(pmt);
+                                            pmt.Dette = dette;
+
+                                            if (dette.MontantRestant == 0 && dette.MontantVerse == dette.Montant)
+                                            {
+                                                Console.WriteLine("La dette est entièrement remboursée.");
+                                                dette.TypeDette = TypeDette.Solde;
+                                            }
+
+                                            detteService.Update(dette);
+
+                                            // if (update)
+                                            // {
+                                            //     Console.WriteLine("Paiement et mise à jour de la dette réussis.");
+                                            // }
+                                            // else
+                                            // {
+                                            //     Console.WriteLine("Erreur lors de la mise à jour de la dette.");
+                                            // }
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("dette innexistant ");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("client pas trouve");
+                                    }
+                                    break;
+                                case 2:
+                                    ClientView.ListClients(clientService.FindAll());
+                                    Client client1 = clientService.FindById(ClientView.SaisirId());
+                                    if (client1 != null)
+                                    {
+                                        List<Dette> dettes = detteService.GetDettesByClient(client1);
+                                        if (dettes !=null)
+                                            {
+                                                Console.WriteLine("Liste des dettes du client:");
+                                                foreach (var dette in dettes)
+                                                {
+                                                    Console.WriteLine(dette);
+                                                    // Affichez d'autres informations si nécessaire
+                                                }   
+                                            }
+                                        else
+                                        {
+                                            Console.WriteLine("ce client n'a pas de dette ");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Ce client n'existe pas");
+                                    }                       
+                                    break;
+                                case 0:
+                                    Console.WriteLine("Au revoir!");
+                                    break;
+                                default:
+                                    Console.WriteLine("Choix invalide!");
+                                    break;
+                            }
+                        } while (choicePaiement != 0);
+                    break;
                 }
             } while (choice != 0);
         }

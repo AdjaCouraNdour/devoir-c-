@@ -43,10 +43,10 @@ namespace GestionBoutiqueC.services
         {
             detteRepository.Update(dette);
         }
-        // public List<Dette> GetDettesByClientId(int clientId)
-        // {
-        //     return detteRepository.SelectDettesByClientId(clientId);
-        // }
+        public List<Dette> GetDettesByClientId(int clientId)
+        {
+            return detteRepository.SelectDettesByClientId(clientId);
+        }
 
         public List<Dette> GetDettesByClient(Client client)
         {

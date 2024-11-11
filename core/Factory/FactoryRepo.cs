@@ -47,7 +47,7 @@ namespace GestionBoutiqueC.core.Factory
             switch (type)
             {
                 case Persistence.Database:
-                    detteRepository = new DetteRepositoryBd(new DataBase());
+                    detteRepository = new DetteRepositoryBd(new DataBase(),createClientRepository(type),createArticleRepository(type));
                     break;
                 case Persistence.List:
                     detteRepository = new DetteRepository();
@@ -64,7 +64,7 @@ namespace GestionBoutiqueC.core.Factory
             switch (type)
             {
                 case Persistence.Database:
-                    paiementRepository = new PaiementRepositoryBd(new DataBase());
+                    paiementRepository = new PaiementRepositoryBd(new DataBase(),createDetteRepository(type));
                     break;
                 case Persistence.List:
                     paiementRepository = new PaiementRepository();
@@ -98,7 +98,7 @@ namespace GestionBoutiqueC.core.Factory
             switch (type)
             {
                 case Persistence.Database:
-                    detailsRepository = new DetailsRepositoryBd(new DataBase());
+                    detailsRepository = new DetailsRepositoryBd(new DataBase(),createDetteRepository(type),createArticleRepository(type));
                     break;
                 case Persistence.List:
                     detailsRepository = new DetailsRepository();

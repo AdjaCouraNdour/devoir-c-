@@ -59,7 +59,7 @@ namespace GestionBoutiqueC.repository.Bd
             cmd.Parameters.AddWithValue("@surname", entity.Surnom);
             cmd.Parameters.AddWithValue("@telephone", entity.Telephone);
             cmd.Parameters.AddWithValue("@address", entity.Address);
-            cmd.Parameters.AddWithValue("@updateAt", DateTime.Now);
+            cmd.Parameters.AddWithValue("@updateAt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
 
         }

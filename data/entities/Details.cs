@@ -19,7 +19,7 @@ namespace GestionBoutiqueC.data.entities
         {
             nbr++;
             Id = nbr;
-           CreateAt = DateTime.Now;
+            CreateAt = DateTime.Now;
             UpdateAt = DateTime.Now;
         }
         public DateTime CreateAt { get; set; }

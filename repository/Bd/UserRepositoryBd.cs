@@ -123,7 +123,7 @@ namespace GestionBoutiqueC.repository.Bd
             cmd.Parameters.AddWithValue("@userRole", entity.UserRole.ToString());
             cmd.Parameters.AddWithValue("@actif", entity.Actif);
             cmd.Parameters.AddWithValue("@clientId", entity.Client?.Id);
-            cmd.Parameters.AddWithValue("@updateAt", DateTime.Now);
+            cmd.Parameters.AddWithValue("@updateAt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
         }
 

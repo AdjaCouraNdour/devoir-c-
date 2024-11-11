@@ -16,5 +16,10 @@ namespace GestionBoutiqueC.views
                 Console.WriteLine(dette);
             }
         }
+         public static int SaisirId()
+        {
+            Console.WriteLine("Id de la dette ?");
+            return Convert.ToInt32(Console.ReadLine());
+        }
     }
 }
