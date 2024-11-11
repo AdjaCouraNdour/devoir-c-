@@ -111,8 +111,11 @@ namespace GestionBoutiqueC.repository.Bd
             foreach (var details in detailsList)
             {
                 dette.AddDetails(details);  // Ajoute chaque détail à ListeDetails de Dette
-            }            
-            foreach (var paiement in GetPaiementsByDetteId(dette.Id))
+            }  
+            
+            List<Paiement> paiementList = GetPaiementsByDetteId(dette.Id);
+          
+            foreach (var paiement in paiementList)
             {
                 dette.AddPaiement(paiement);
             }
@@ -221,7 +224,7 @@ namespace GestionBoutiqueC.repository.Bd
                             Paiement paiement = new Paiement
                             {
                                 Montant = reader.GetDouble("montant"),
-                                Date = reader.GetDateTime("date").ToLocalTime().Date
+                                Date = reader.GetDateTime("date")
                             };
                             paiementsList.Add(paiement);
                         }
