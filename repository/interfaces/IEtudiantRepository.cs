@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 using GestionBoutiqueC.core;
 using GestionBoutiqueC.data.entities;
-using GestionBoutiqueC.repository.interfaces;
 
 
-namespace GestionBoutiqueC.repository.List
+namespace GestionBoutiqueC.repository.interfaces
 {
-    public class PaiementRepository :RepositoryImpl<Paiement>,IPaiementRepository
+    public interface IEtudiantRepository : IRepository<Etudiant>
     {
 
+    
     }
 }

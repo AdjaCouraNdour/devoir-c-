@@ -10,10 +10,9 @@ using GestionBoutiqueC.data.entities;
 
 namespace GestionBoutiqueC.repository.interfaces
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IAbsenceRepository : IRepository<Absence>
     {
+        public List<Absence>? SelectByEtudiantId(int etudiantId);
 
-        User? SelectByLogin(string login);
-        User? SelectByEmail(string email);
     }
 }

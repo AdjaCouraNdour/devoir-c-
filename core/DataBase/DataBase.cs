@@ -5,7 +5,7 @@ namespace GestionBoutiqueC.core.Database
     public class DataBase : IDataBase
     {
         protected MySqlConnection? conn;
-        private readonly string connectionString = "Server=localhost;Port=3306;Database=gestion_boutique_C#;User ID=root;Password=;";
+        private readonly string connectionString = "Server=localhost;Port=3306;Database=devoir;User ID=root;Password=;";
         public void closeConnection()
         {
             if (conn != null && conn.State != System.Data.ConnectionState.Open){

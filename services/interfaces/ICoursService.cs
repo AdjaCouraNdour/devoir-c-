@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GestionBoutiqueC.services.interfaces
 {
-    public interface IDetailsService : IService<Details>
+    public interface ICoursService : IService<Cours>
     {
       
 

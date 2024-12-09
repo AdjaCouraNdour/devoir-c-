@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace GestionBoutiqueC.services.interfaces
 {
-    public interface IClientService: IService<Client>
+    public interface IEtudiantService: IService<Etudiant>
     {
-      Client FindByTelephone(string telephone);
+
 
     }
 }

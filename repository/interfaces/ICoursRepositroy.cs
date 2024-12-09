@@ -10,8 +10,8 @@ using GestionBoutiqueC.data.entities;
 
 namespace GestionBoutiqueC.repository.interfaces
 {
-    public interface IClientRepository : IRepository<Client>
+    public interface ICoursRepository : IRepository<Cours>
     {
-        Client? SelectByTelephone(string telephone);
+
     }
 }
